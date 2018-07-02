@@ -2,7 +2,7 @@
 /**
  * 
  */
-//% weight=0 color=#3CB371 icon="\uf544" block="Roboloq"
+//% weight=0 color=#3CB371 icon="\uf0ad" block="Roboloq"
 namespace robobloq {
 
     let tool= new SerialTool();
@@ -13,8 +13,17 @@ namespace robobloq {
     //% blockId="gsTest" block="start test"
     //% blockGap=2 weight=1
     export function gsTest(): void {
-        console.log("test:18-7-2:1507");
+        //console.log("test:18-7-2:1507");
         basic.showNumber(1);
+    }
+
+    /**
+    * Test rgb
+    */
+    //% blockId="gsLightRgb" block="test rgb"
+    //% blockGap=2 weight=1
+    export function gsLightRgb(): void {
+        //console.log("test:18-7-2:1507");
         tool.test(); 
     }
 
