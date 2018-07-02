@@ -1,5 +1,9 @@
+
+/**
+ * 
+ */
 //% weight=0 color=#3CB371 icon="\uf0ad" block="Tools"
-namespace tools {
+namespace robobloq {
     /**
     * 計算長方形面積，並回傳
     */
@@ -15,5 +19,24 @@ namespace tools {
     //% blockGap=2 weight=1
     export function ledOfRectangle(length: number, width:number): void {
         basic.showNumber(length*width)
+    }
+
+
+    /**
+    * Test
+    */
+    //% blockId="gsTest" block="start test"
+    //% blockGap=2 weight=0 
+    export function gsTest(): number {
+        console.log("test:18-7-2:1507");
+        return 0
+    }
+
+    /**
+     * 
+     */
+    export class SerialTool
+    {
+
     }
 }
