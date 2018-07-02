@@ -19,7 +19,7 @@ MIT
 ## Supported targets
 
 * for PXT/microbit
-控制Robobloq的micro:bit积木
+
 
 ```package
 robobloq=github:moklib/microbit-robobloq
