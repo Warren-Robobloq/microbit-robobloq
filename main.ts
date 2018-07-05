@@ -50,39 +50,42 @@ namespace robobloq {
     export class SerialTool
     {
         
-        serial.redirect(
-            SerialPin.P1,
-            SerialPin.P0,
-            BaudRate.BaudRate115200
-        )
-
+        // serial.redirect(
+        //     SerialPin.P1,
+        //     SerialPin.P0,
+        //     BaudRate.BaudRate115200
+        // )
         test(){
-            let date = pins.createBuffer(10);
-            date.setNumber(NumberFormat.Int8LE, 0, 82);
-            date.setNumber(NumberFormat.Int8LE, 1, 66);
-            date.setNumber(NumberFormat.Int8LE, 2, 10);
-            date.setNumber(NumberFormat.Int8LE, 3, 0);
-            date.setNumber(NumberFormat.Int8LE, 4, 16);
-            date.setNumber(NumberFormat.Int8LE, 5, 0);
-            date.setNumber(NumberFormat.Int8LE, 6, 0);
-            date.setNumber(NumberFormat.Int8LE, 7, 0);
-            date.setNumber(NumberFormat.Int8LE, 8, 0);
-            date.setNumber(NumberFormat.Int8LE, 9, 174);
-            serial.writeBuffer(date);
-            basic.pause(500);
-            date.setNumber(NumberFormat.Int8LE, 0, 82);
-            date.setNumber(NumberFormat.Int8LE, 1, 66);
-            date.setNumber(NumberFormat.Int8LE, 2, 10);
-            date.setNumber(NumberFormat.Int8LE, 3, 0);
-            date.setNumber(NumberFormat.Int8LE, 4, 16);
-            date.setNumber(NumberFormat.Int8LE, 5, 0);
-            date.setNumber(NumberFormat.Int8LE, 6, 200);
-            date.setNumber(NumberFormat.Int8LE, 7, 50);
-            date.setNumber(NumberFormat.Int8LE, 8, 50);
-            date.setNumber(NumberFormat.Int8LE, 9, 218);
-            serial.writeBuffer(date);
-            basic.pause(500);
+            basic.showNumber(8);
         }
+
+        // test2(){
+        //     let date = pins.createBuffer(10);
+        //     date.setNumber(NumberFormat.Int8LE, 0, 82);
+        //     date.setNumber(NumberFormat.Int8LE, 1, 66);
+        //     date.setNumber(NumberFormat.Int8LE, 2, 10);
+        //     date.setNumber(NumberFormat.Int8LE, 3, 0);
+        //     date.setNumber(NumberFormat.Int8LE, 4, 16);
+        //     date.setNumber(NumberFormat.Int8LE, 5, 0);
+        //     date.setNumber(NumberFormat.Int8LE, 6, 0);
+        //     date.setNumber(NumberFormat.Int8LE, 7, 0);
+        //     date.setNumber(NumberFormat.Int8LE, 8, 0);
+        //     date.setNumber(NumberFormat.Int8LE, 9, 174);
+        //     serial.writeBuffer(date);
+        //     basic.pause(500);
+        //     date.setNumber(NumberFormat.Int8LE, 0, 82);
+        //     date.setNumber(NumberFormat.Int8LE, 1, 66);
+        //     date.setNumber(NumberFormat.Int8LE, 2, 10);
+        //     date.setNumber(NumberFormat.Int8LE, 3, 0);
+        //     date.setNumber(NumberFormat.Int8LE, 4, 16);
+        //     date.setNumber(NumberFormat.Int8LE, 5, 0);
+        //     date.setNumber(NumberFormat.Int8LE, 6, 200);
+        //     date.setNumber(NumberFormat.Int8LE, 7, 50);
+        //     date.setNumber(NumberFormat.Int8LE, 8, 50);
+        //     date.setNumber(NumberFormat.Int8LE, 9, 218);
+        //     serial.writeBuffer(date);
+        //     basic.pause(500);
+        // }
 
     }
 }
