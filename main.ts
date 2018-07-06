@@ -5,6 +5,7 @@
  * 想了解更详细的信息，请前往 https://makecode.microbit.org/blocks/custom
  */
 
+
 enum lightEnum {
     //% block="double"
     double,
@@ -33,6 +34,19 @@ enum portEnum {
     port8,
 }
 
+enum enumSoundTime {
+    //% block="half"
+    half,
+    //% block="quarter"
+    quarter,
+    //% block="eighth"
+    eighth,
+    //% block="whole"
+    whole,
+    //% block="double"
+    double
+}
+
 /**
  * 自定义图形块
  */
@@ -56,7 +70,7 @@ namespace robobloq {
         }else if(e== lightEnum.left){
             ev = -4;
         }
-        let oid = rb.orderId(); //0;
+        let oid = 0;// rb.orderId(); //0;
         let list = pro.setLed(oid,ev,red,green,blue);
         rb.write(list);
         //console.log("rb:led:"+ oid );
@@ -234,7 +248,13 @@ namespace robobloq {
         rb.write(list);
     }
 
-    
+    //% blockId="setBuzzer" block="set sound rate %rate|time %time"
+    export function setBuzzer(rate:number, time:number): void {
+        let oid = 0;
+        let list = pro.setBuzzer(oid,rate,time);
+        rb.write(list);
+    }
+
 
     /**
      * 通信协议
@@ -308,11 +328,11 @@ namespace robobloq {
             return list;
         }
 
-        setBuzzer(order:number, port:number, rate:number, time:number):number[] {
+        setBuzzer(order:number, rate:number, time:number):number[] {
             let size:number = 11 ;
             let l1:number[] = this.Int16BE(rate);
             let l2:number[] = this.Int16BE(time);
-            let list:number[]=[82,66,size,order, 0x13,port,l1[0],l1[1],l2[0],l2[1],0];
+            let list:number[]=[82,66,size,order, 0x13,0xfa,l1[0],l1[1],l2[0],l2[1],0];
             list[size-1] = this.sumCheck(list,0);
             return list;
         }
@@ -359,4 +379,6 @@ namespace robobloq {
         }
     }
 
+
 }
+
