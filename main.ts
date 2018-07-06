@@ -158,9 +158,9 @@ namespace robobloq {
     //let data ="";
     
     //% blockId="ts1" block="ts1 %e"
-    export function ts1(e:enumSoundTime): number {
-        //let t = e.valueOf();
-        return e ;
+    export function ts1(e:enumSoundTime): string {
+        let a = pro.Int16BE(e);
+        return pro.listToString(a) ;
     }
 
     //% blockId="robobloqInit" block="Robobloq init"
@@ -260,15 +260,6 @@ namespace robobloq {
             return this.OrderIndex;
         }
 
-        listToString(list:number[]):string{
-            let st =":";
-            let size :number = list.length ;
-            if(size <1)return st;
-            for(let i=0;i< size;i++){
-                st = st+"."+list[i];
-            }
-            return st;
-        }
 
         /**
          * 取主板返回的数据
@@ -483,6 +474,16 @@ namespace robobloq {
             ls[0] = (v / 16);
             ls[1] = (v % 16);
             return ls;
+        }
+
+        listToString(list:number[]):string{
+            let st =":";
+            let size :number = list.length ;
+            if(size <1)return st;
+            for(let i=0;i< size;i++){
+                st = st+"."+list[i];
+            }
+            return st;
         }
     }
 
