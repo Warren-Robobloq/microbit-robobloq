@@ -202,7 +202,7 @@ namespace robobloq {
         let list = pro.setBuzzer(oid,rate,time);
         rb.write(list);
     }
-    
+
     // export function testSound(): void {
     //     //5242 0b04 13fa 052a 03e8 ca
     //     let date = pins.createBuffer(11)
@@ -346,9 +346,14 @@ namespace robobloq {
         rb.write(list);
     }
 
+    //% blockId="setMove" block="set Move M1 %m1Speed|M2 %m2Speed"
+    export function setMove(m1Speed:number, m2Speed:number): void {
+        let oid = 0;
+        let list = pro.setMove(oid,m1Speed, m2Speed);
+        rb.write(list);
+    }
 
-
-
+    
     /**
      * 通信协议
      */
