@@ -396,12 +396,12 @@ namespace robobloq {
             return list;
         }
         /**
-         * 获取超声波数值（单位豪米）
+         * 获取超声波数值（单位 cm）
          */
         parseUltrasonicValue(itme:number[]):number {
             if (!itme || itme.length < 6) return 0;
             const value :number= itme[5]  * 256 + itme[6];
-            return value;
+            return (value / 10);
         }
         /**
          * 设置超声波灯光
