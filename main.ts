@@ -157,10 +157,13 @@ namespace robobloq {
     const rb = new Robot();
     //let data ="";
     
-    //% blockId="ts1" block="ts1 %e"
-    export function ts1(e:enumSoundTime): string {
-        let a = pro.Int16BE(e);
-        return pro.listToString(a) ;
+    //% blockId="ts1" block="ts1 %rate | time %time "
+    export function ts1(rate:enumSoundRate, time:enumSoundTime): string {
+        let a = pro.setBuzzer(0,rate,time);
+
+        let s = pro.listToString(a);
+        console.log(s );
+        return s ;
     }
 
     //% blockId="robobloqInit" block="Robobloq init"
@@ -200,7 +203,9 @@ namespace robobloq {
      export function setBuzzer(rate:enumSoundRate, time:enumSoundTime): void {
         let oid = 0;
         let list = pro.setBuzzer(oid,rate,time);
+        console.log(pro.listToString(list) );
         rb.write(list);
+        basic.pause(time);
     }
 
     //% blockId="setUltrasonicLight" block="set %e| in UltrasonicLight panel red %red|green %green | blue %blue"
@@ -328,12 +333,13 @@ namespace robobloq {
                 buffer.setNumber(NumberFormat.Int8LE, i, list[i]);
             }
             serial.writeBuffer(buffer);
+            basic.pause(10);
             this.read();
         }
     
         read():void{
             let db = serial.readString();
-            if(db && db.length >2){
+            if(db && db.length >4){
                 this.dataPush(db);
             }
         }
@@ -471,8 +477,8 @@ namespace robobloq {
         //储存12: Int16BE用<00 0c> , Int16LE用<0c 00>
         Int16BE(v:number):number[]{
             let ls:number[] =[0,0];
-            ls[0] = (v / 16);
-            ls[1] = (v % 16);
+            ls[0] = (v / 256);
+            ls[1] = (v % 256);
             return ls;
         }
 
