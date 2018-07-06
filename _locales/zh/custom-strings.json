@@ -1,7 +1,0 @@
-{
-    "custom|block": "魔洛克",
-    "custom.gsTest|block": "开启测试",
-    "custom.gsLightRgb|block": "RGB测试",
-    "custom.areaOfRectangle|block": "長方形面積 長 %length|寬 %width",
-    "custom.ledOfRectangle|block": "LED顯示長方形面積 長 %length|寬 %width"
-}

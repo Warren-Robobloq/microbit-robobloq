@@ -1,0 +1,7 @@
+{
+    "robobloq|block": "魔洛克",
+    "robobloq.gsTest|block": "开启测试",
+    "robobloq.gsLightRgb|block": "RGB测试",
+    "robobloq.areaOfRectangle|block": "長方形面積 長 %length|寬 %width",
+    "robobloq.ledOfRectangle|block": "LED顯示長方形面積 長 %length|寬 %width"
+}
