@@ -157,13 +157,12 @@ namespace robobloq {
     const rb = new Robot();
     //let data ="";
     
-    //% blockId="ts1" block="ts1 %rate | time %time "
-    export function ts1(rate:enumSoundRate, time:enumSoundTime): string {
-        let a = pro.setBuzzer(0,rate,time);
-
-        let s = pro.listToString(a);
-        console.log(s );
-        return s ;
+    //% blockId="ts1" block="ts1 %e "
+    export function ts1(e:portEnum): number {
+        let oid = rb.orderId();
+        let list = pro.getUltrasonicValue(oid,e);
+        console.log(pro.listToString( list) );
+        return 1 ;
     }
 
     //% blockId="robobloqInit" block="Robobloq init"
@@ -185,6 +184,7 @@ namespace robobloq {
         let list = pro.getUltrasonicValue(oid,e);
         rb.write(list);
         basic.pause(200);
+        rb.read();
         let item = rb.getDataItem(oid,0);
         return pro.parseUltrasonicValue(item);
     }
@@ -195,12 +195,13 @@ namespace robobloq {
         let list = pro.setLed(oid,e,red,green,blue);
         rb.write(list);
         basic.pause(200);
+        rb.read();
         let item = rb.getDataItem(oid,0);
         return pro.getTestLeb(item);
     }
 
-     //% blockId="setBuzzer" block="set sound rate %rate|time %time"
-     export function setBuzzer(rate:enumSoundRate, time:enumSoundTime): void {
+    //% blockId="setBuzzer" block="set sound rate %rate|time %time"
+    export function setBuzzer(rate:enumSoundRate, time:enumSoundTime): void {
         let oid = 0;
         let list = pro.setBuzzer(oid,rate,time);
         console.log(pro.listToString(list) );
@@ -222,24 +223,24 @@ namespace robobloq {
         rb.write(list);
     }
 
-    //% blockId="testSound" block="testSound"
-    export function testSound(): void {
-        //5242 0b04 13fa 052a 03e8 ca
-        let date = pins.createBuffer(11)
-        date.setNumber(NumberFormat.Int8LE, 0, 0x52)
-        date.setNumber(NumberFormat.Int8LE, 1, 0x42)
-        date.setNumber(NumberFormat.Int8LE, 2, 0x0b)
-        date.setNumber(NumberFormat.Int8LE, 3, 0x04)
-        date.setNumber(NumberFormat.Int8LE, 4, 0x13)
-        date.setNumber(NumberFormat.Int8LE, 5, 0xfa)
-        date.setNumber(NumberFormat.Int8LE, 6, 0x05)
-        date.setNumber(NumberFormat.Int8LE, 7, 0x2a)
-        date.setNumber(NumberFormat.Int8LE, 8, 0x03)
-        date.setNumber(NumberFormat.Int8LE, 9, 0xe8)
-        date.setNumber(NumberFormat.Int8LE, 10, 0xca)
-        serial.writeBuffer(date)
-        basic.pause(1500)
-    }
+    // blockId="testSound" block="testSound"
+    // export function testSound(): void {
+    //     //5242 0b04 13fa 052a 03e8 ca
+    //     let date = pins.createBuffer(11)
+    //     date.setNumber(NumberFormat.Int8LE, 0, 0x52)
+    //     date.setNumber(NumberFormat.Int8LE, 1, 0x42)
+    //     date.setNumber(NumberFormat.Int8LE, 2, 0x0b)
+    //     date.setNumber(NumberFormat.Int8LE, 3, 0x04)
+    //     date.setNumber(NumberFormat.Int8LE, 4, 0x13)
+    //     date.setNumber(NumberFormat.Int8LE, 5, 0xfa)
+    //     date.setNumber(NumberFormat.Int8LE, 6, 0x05)
+    //     date.setNumber(NumberFormat.Int8LE, 7, 0x2a)
+    //     date.setNumber(NumberFormat.Int8LE, 8, 0x03)
+    //     date.setNumber(NumberFormat.Int8LE, 9, 0xe8)
+    //     date.setNumber(NumberFormat.Int8LE, 10, 0xca)
+    //     serial.writeBuffer(date)
+    //     basic.pause(1500)
+    // }
 
     /**
      * robot
@@ -302,8 +303,9 @@ namespace robobloq {
             if(d !=[] && d.length >2 ){
                 let size :number = d.length ;
                 if(size <3)return;
-                rb.dataList.push(d);
-                //basic.showString("M"+ rb.dataList.length );
+                this.dataList.push(d);
+                //basic.showString("M"+ this.dataList.length );
+                //basic.showString("W"+ pro.listToString(d) );
             }
         }
     
@@ -317,10 +319,6 @@ namespace robobloq {
                     list.push(db.charCodeAt(i));
                     //st = st+"."+db.charCodeAt(i);
                 }
-                //rb.dataList.push(list);
-                //basic.showNumber(size);
-                //basic.showString(st+","+ size);
-                //basic.showString("S"+ rb.dataList.length );
             }
             return list;
         }
@@ -333,8 +331,8 @@ namespace robobloq {
                 buffer.setNumber(NumberFormat.Int8LE, i, list[i]);
             }
             serial.writeBuffer(buffer);
-            basic.pause(10);
-            this.read();
+            basic.pause(20);
+            //this.read();
         }
     
         read():void{
