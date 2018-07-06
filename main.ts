@@ -8,45 +8,145 @@
 
 enum lightEnum {
     //% block="double"
-    double,
+    double =0,
     //% block="left"
-    left,
+    left= -4,
     //% block="right"
-    right
+    right = -5
 }
 
 enum portEnum {
     //% block="port1"
-    port1,
+    port1=1,
     //% block="port2"
-    port2,
+    port2=2,
     //% block="port3"
-    port3,
+    port3=3,
     //% block="port4"
-    port4,
+    port4=4,
     //% block="port5"
-    port5,
+    port5=5,
     //% block="port6"
-    port6,
+    port6=6,
     //% block="port7"
-    port7,
+    port7=7,
     //% block="port8"
-    port8,
+    port8=8,
 }
 
 enum enumSoundTime {
-    //% block="half"
-    half,
-    //% block="quarter"
-    quarter,
-    //% block="eighth"
-    eighth,
-    //% block="whole"
-    whole,
-    //% block="double"
-    double
+    //% block="Half"
+    half=500,
+    //% block="Quarter"
+    quarter=250,
+    //% block="Eighth"
+    eighth=125,
+    //% block="Whole"
+    whole=1000,
+    //% block="Double"
+    double=2000
 }
 
+enum enumSoundRate {
+    //% block="C2"
+    C2 = 65,
+    //% block="D2"
+    D2 = 73,
+    //% block="E2"
+    E2 = 82,
+    //% block="F2"
+    F2 = 87,
+    //% block="G2"
+    G2 = 98,
+    //% block="A2"
+    A2 = 110,
+    //% block="B2"
+    B2 = 124,
+    //% block="C3"
+    C3 = 131,
+    //% block="D3"
+    D3 = 147,
+    //% block="E3"
+    E3 = 165,
+    //% block="F3"
+    F3 = 175,
+    //% block="G3"
+    G3 = 196,
+    //% block="A3"
+    A3 = 220,
+    //% block="B3"
+    B3 = 247,
+    //% block="C4"
+    C4 = 262,
+    //% block="D4"
+    D4 = 294,
+    //% block="E4"
+    E4 = 330,
+    //% block="F4"
+    F4 = 349,
+    //% block="G4"
+    G4 = 392,
+    //% block="A4"
+    A4 = 440,
+    //% block="B4"
+    B4 = 494,
+    //% block="C5"
+    C5 = 523,
+    //% block="D5"
+    D5 = 587,
+    //% block="E5"
+    E5 = 659,
+    //% block="F5"
+    F5 = 699,
+    //% block="G5"
+    G5 = 784,
+    //% block="A5"
+    A5 = 880,
+    //% block="B5"
+    B5 = 988,
+    //% block="C6"
+    C6 = 1047,
+    //% block="D6"
+    D6 = 1175,
+    //% block="E6"
+    E6 = 1319,
+    //% block="F6"
+    F6 = 1397,
+    //% block="G6"
+    G6 = 1568,
+    //% block="A6"
+    A6 = 1760,
+    //% block="B6"
+    B6 = 1976,
+    //% block="C7"
+    C7 = 2093,
+    //% block="D7"
+    D7 = 2349,
+    //% block="E7"
+    E7 = 2637,
+    //% block="F7"
+    F7 = 2794,
+    //% block="G7"
+    G7 = 3136,
+    //% block="A7"
+    A7 = 3520,
+    //% block="B7"
+    B7 = 3951,
+    //% block="C8"
+    C8 = 4186,
+    //% block="D8"
+    D8 = 4699,
+    //% block="E8"
+    E8 = 5274,
+    //% block="F8"
+    F8 = 5588,
+    //% block="G8"
+    G8 = 6272,
+    //% block="A8"
+    A8 = 7040,
+    //% block="B8"
+    B8 = 7902
+}
 /**
  * 自定义图形块
  */
@@ -57,6 +157,12 @@ namespace robobloq {
     const rb = new Robot();
     //let data ="";
     
+    //% blockId="ts1" block="ts1 %e"
+    export function ts1(e:enumSoundTime): number {
+        //let t = e.valueOf();
+        return e ;
+    }
+
     //% blockId="robobloqInit" block="Robobloq init"
     export function robobloqInit(): void {
         rb.SystemInit();
@@ -64,23 +170,16 @@ namespace robobloq {
 
     //% blockId="lightRgb" block="set %e| in LED panel red %red|green %green | blue %blue"
     export function lightRgb(e:lightEnum,red:number,green:number,blue:number): void {
-        let ev :number=0;
-        if(e== lightEnum.right){
-            ev = -5;
-        }else if(e== lightEnum.left){
-            ev = -4;
-        }
         let oid = 0;// rb.orderId(); //0;
-        let list = pro.setLed(oid,ev,red,green,blue);
+        let list = pro.setLed(oid,e,red,green,blue);
         rb.write(list);
         //console.log("rb:led:"+ oid );
     }
 
     //% blockId="getUltrasonicValue" block="read ultrasonic sensor %e"
     export function getUltrasonicValue(e:portEnum): number {
-        let ev :number= pro.getPortValue(e);
         let oid = rb.orderId();
-        let list = pro.getUltrasonicValue(oid,ev);
+        let list = pro.getUltrasonicValue(oid,e);
         rb.write(list);
         basic.pause(200);
         let item = rb.getDataItem(oid,0);
@@ -89,38 +188,38 @@ namespace robobloq {
 
     //% blockId="testBack" block="testBack set %e| in LED panel red %red|green %green | blue %blue"
     export function testBack(e:lightEnum,red:number,green:number,blue:number): number {
-        let ev :number=0;
-        if(e== lightEnum.right){
-            ev = -5;
-        }else if(e== lightEnum.left){
-            ev = -4;
-        }
         let oid = rb.orderId();
-        let list = pro.setLed(oid,ev,red,green,blue);
+        let list = pro.setLed(oid,e,red,green,blue);
         rb.write(list);
         basic.pause(200);
         let item = rb.getDataItem(oid,0);
         return pro.getTestLeb(item);
     }
 
-    //% block
-    export function testSound(): void {
-        //5242 0b04 13fa 052a 03e8 ca
-        let date = pins.createBuffer(11)
-        date.setNumber(NumberFormat.Int8LE, 0, 0x52)
-        date.setNumber(NumberFormat.Int8LE, 1, 0x42)
-        date.setNumber(NumberFormat.Int8LE, 2, 0x0b)
-        date.setNumber(NumberFormat.Int8LE, 3, 0x04)
-        date.setNumber(NumberFormat.Int8LE, 4, 0x13)
-        date.setNumber(NumberFormat.Int8LE, 5, 0xfa)
-        date.setNumber(NumberFormat.Int8LE, 6, 0x05)
-        date.setNumber(NumberFormat.Int8LE, 7, 0x2a)
-        date.setNumber(NumberFormat.Int8LE, 8, 0x03)
-        date.setNumber(NumberFormat.Int8LE, 9, 0xe8)
-        date.setNumber(NumberFormat.Int8LE, 10, 0xca)
-        serial.writeBuffer(date)
-        basic.pause(1500)
+     //% blockId="setBuzzer" block="set sound rate %rate|time %time"
+     export function setBuzzer(rate:enumSoundRate, time:enumSoundTime): void {
+        let oid = 0;
+        let list = pro.setBuzzer(oid,rate,time);
+        rb.write(list);
     }
+    
+    // export function testSound(): void {
+    //     //5242 0b04 13fa 052a 03e8 ca
+    //     let date = pins.createBuffer(11)
+    //     date.setNumber(NumberFormat.Int8LE, 0, 0x52)
+    //     date.setNumber(NumberFormat.Int8LE, 1, 0x42)
+    //     date.setNumber(NumberFormat.Int8LE, 2, 0x0b)
+    //     date.setNumber(NumberFormat.Int8LE, 3, 0x04)
+    //     date.setNumber(NumberFormat.Int8LE, 4, 0x13)
+    //     date.setNumber(NumberFormat.Int8LE, 5, 0xfa)
+    //     date.setNumber(NumberFormat.Int8LE, 6, 0x05)
+    //     date.setNumber(NumberFormat.Int8LE, 7, 0x2a)
+    //     date.setNumber(NumberFormat.Int8LE, 8, 0x03)
+    //     date.setNumber(NumberFormat.Int8LE, 9, 0xe8)
+    //     date.setNumber(NumberFormat.Int8LE, 10, 0xca)
+    //     serial.writeBuffer(date)
+    //     basic.pause(1500)
+    // }
 
     /**
      * robot
@@ -242,18 +341,12 @@ namespace robobloq {
 
     //% blockId="setUltrasonicLight" block="set %e| in UltrasonicLight panel red %red|green %green | blue %blue"
     export function setUltrasonicLight(e:portEnum,red:number,green:number,blue:number): void {
-        let ev :number= pro.getPortValue(e);
         let oid = 0;
-        let list = pro.setUltrasonicLight(oid,ev,red,green,blue);
+        let list = pro.setUltrasonicLight(oid,e,red,green,blue);
         rb.write(list);
     }
 
-    //% blockId="setBuzzer" block="set sound rate %rate|time %time"
-    export function setBuzzer(rate:number, time:number): void {
-        let oid = 0;
-        let list = pro.setBuzzer(oid,rate,time);
-        rb.write(list);
-    }
+
 
 
     /**
@@ -268,18 +361,18 @@ namespace robobloq {
             return 0;
         }
 
-        getPortValue(e:portEnum):number{
-            let v :number =2;
-            if(e = portEnum.port1) v= 1;
-            else if(e = portEnum.port2) v= 2;
-            else if(e = portEnum.port3) v= 3;
-            else if(e = portEnum.port4) v= 4;
-            else if(e = portEnum.port5) v= 5;
-            else if(e = portEnum.port6) v= 6;
-            else if(e = portEnum.port7) v= 7;
-            else if(e = portEnum.port8) v= 8;
-            return v;
-        }
+        // getPortValue(e:portEnum):number{
+        //     let v :number =2;
+        //     if(e = portEnum.port1) v= 1;
+        //     else if(e = portEnum.port2) v= 2;
+        //     else if(e = portEnum.port3) v= 3;
+        //     else if(e = portEnum.port4) v= 4;
+        //     else if(e = portEnum.port5) v= 5;
+        //     else if(e = portEnum.port6) v= 6;
+        //     else if(e = portEnum.port7) v= 7;
+        //     else if(e = portEnum.port8) v= 8;
+        //     return v;
+        // }
 
         /**
          * 获取超声波数值
