@@ -157,13 +157,13 @@ namespace robobloq {
     const rb = new Robot();
     //let data ="";
     
-    //% blockId="ts1" block="ts1 %e "
-    export function ts1(e:portEnum): number {
-        let oid = rb.orderId();
-        let list = pro.getUltrasonicValue(oid,e);
-        console.log(pro.listToString( list) );
-        return 1 ;
-    }
+    // blockId="ts1" block="ts1 %e "
+    // export function ts1(e:portEnum): number {
+    //     let oid = rb.orderId();
+    //     let list = pro.getUltrasonicValue(oid,e);
+    //     console.log(pro.listToString( list) );
+    //     return 1 ;
+    // }
 
     //% blockId="robobloqInit" block="Robobloq init"
     export function robobloqInit(): void {
@@ -189,16 +189,16 @@ namespace robobloq {
         return pro.parseUltrasonicValue(item);
     }
 
-    //% blockId="testBack" block="testBack set %e| in LED panel red %red|green %green | blue %blue"
-    export function testBack(e:lightEnum,red:number,green:number,blue:number): number {
-        let oid = rb.orderId();
-        let list = pro.setLed(oid,e,red,green,blue);
-        rb.write(list);
-        basic.pause(200);
-        rb.read();
-        let item = rb.getDataItem(oid,0);
-        return pro.getTestLeb(item);
-    }
+    // blockId="testBack" block="testBack set %e| in LED panel red %red|green %green | blue %blue"
+    // export function testBack(e:lightEnum,red:number,green:number,blue:number): number {
+    //     let oid = rb.orderId();
+    //     let list = pro.setLed(oid,e,red,green,blue);
+    //     rb.write(list);
+    //     basic.pause(200);
+    //     rb.read();
+    //     let item = rb.getDataItem(oid,0);
+    //     return pro.getTestLeb(item);
+    // }
 
     //% blockId="setBuzzer" block="set sound rate %rate|time %time"
     export function setBuzzer(rate:enumSoundRate, time:enumSoundTime): void {
