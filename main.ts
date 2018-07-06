@@ -203,23 +203,38 @@ namespace robobloq {
         rb.write(list);
     }
 
-    // export function testSound(): void {
-    //     //5242 0b04 13fa 052a 03e8 ca
-    //     let date = pins.createBuffer(11)
-    //     date.setNumber(NumberFormat.Int8LE, 0, 0x52)
-    //     date.setNumber(NumberFormat.Int8LE, 1, 0x42)
-    //     date.setNumber(NumberFormat.Int8LE, 2, 0x0b)
-    //     date.setNumber(NumberFormat.Int8LE, 3, 0x04)
-    //     date.setNumber(NumberFormat.Int8LE, 4, 0x13)
-    //     date.setNumber(NumberFormat.Int8LE, 5, 0xfa)
-    //     date.setNumber(NumberFormat.Int8LE, 6, 0x05)
-    //     date.setNumber(NumberFormat.Int8LE, 7, 0x2a)
-    //     date.setNumber(NumberFormat.Int8LE, 8, 0x03)
-    //     date.setNumber(NumberFormat.Int8LE, 9, 0xe8)
-    //     date.setNumber(NumberFormat.Int8LE, 10, 0xca)
-    //     serial.writeBuffer(date)
-    //     basic.pause(1500)
-    // }
+    //% blockId="setUltrasonicLight" block="set %e| in UltrasonicLight panel red %red|green %green | blue %blue"
+    export function setUltrasonicLight(e:portEnum,red:number,green:number,blue:number): void {
+        let oid = 0;
+        let list = pro.setUltrasonicLight(oid,e,red,green,blue);
+        rb.write(list);
+    }
+
+    //% blockId="setMove" block="set Move M1 %m1Speed|M2 %m2Speed"
+    export function setMove(m1Speed:number, m2Speed:number): void {
+        let oid = 0;
+        let list = pro.setMove(oid,m1Speed, m2Speed);
+        rb.write(list);
+    }
+
+    //% blockId="testSound" block="testSound"
+    export function testSound(): void {
+        //5242 0b04 13fa 052a 03e8 ca
+        let date = pins.createBuffer(11)
+        date.setNumber(NumberFormat.Int8LE, 0, 0x52)
+        date.setNumber(NumberFormat.Int8LE, 1, 0x42)
+        date.setNumber(NumberFormat.Int8LE, 2, 0x0b)
+        date.setNumber(NumberFormat.Int8LE, 3, 0x04)
+        date.setNumber(NumberFormat.Int8LE, 4, 0x13)
+        date.setNumber(NumberFormat.Int8LE, 5, 0xfa)
+        date.setNumber(NumberFormat.Int8LE, 6, 0x05)
+        date.setNumber(NumberFormat.Int8LE, 7, 0x2a)
+        date.setNumber(NumberFormat.Int8LE, 8, 0x03)
+        date.setNumber(NumberFormat.Int8LE, 9, 0xe8)
+        date.setNumber(NumberFormat.Int8LE, 10, 0xca)
+        serial.writeBuffer(date)
+        basic.pause(1500)
+    }
 
     /**
      * robot
@@ -243,6 +258,16 @@ namespace robobloq {
                 this.OrderIndex = 2;
             }
             return this.OrderIndex;
+        }
+
+        listToString(list:number[]):string{
+            let st =":";
+            let size :number = list.length ;
+            if(size <1)return st;
+            for(let i=0;i< size;i++){
+                st = st+"."+list[i];
+            }
+            return st;
         }
 
         /**
@@ -338,22 +363,6 @@ namespace robobloq {
         }
     }
 
-
-    //% blockId="setUltrasonicLight" block="set %e| in UltrasonicLight panel red %red|green %green | blue %blue"
-    export function setUltrasonicLight(e:portEnum,red:number,green:number,blue:number): void {
-        let oid = 0;
-        let list = pro.setUltrasonicLight(oid,e,red,green,blue);
-        rb.write(list);
-    }
-
-    //% blockId="setMove" block="set Move M1 %m1Speed|M2 %m2Speed"
-    export function setMove(m1Speed:number, m2Speed:number): void {
-        let oid = 0;
-        let list = pro.setMove(oid,m1Speed, m2Speed);
-        rb.write(list);
-    }
-
-    
     /**
      * 通信协议
      */
