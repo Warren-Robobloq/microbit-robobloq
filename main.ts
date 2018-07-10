@@ -5,7 +5,7 @@
  * 想了解更详细的信息，请前往 https://makecode.microbit.org/blocks/custom
  */
 enum lightEnum {
-    //% blockId="lightEnumDouble" block="double-light"
+    //% block="double-light"
     double =0,
     //% block="left-light"
     left= -4,
