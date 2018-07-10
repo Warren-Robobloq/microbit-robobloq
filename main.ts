@@ -8,7 +8,7 @@
  * lightEnum
  */
 enum lightEnum {
-    //% block="Double"
+    //% block="double"
     double =0,
     //% block="left-light"
     left= -4,
@@ -21,21 +21,21 @@ enum lightEnum {
  */
 enum portEnum {
     //% block="port1"
-    port1=1,
+    Port1=1,
     //% block="port2"
-    port2=2,
+    Port2=2,
     //% block="port3"
-    port3=3,
+    Port3=3,
     //% block="port4"
-    port4=4,
+    Port4=4,
     //% block="port5"
-    port5=5,
+    Port5=5,
     //% block="port6"
-    port6=6,
+    Port6=6,
     //% block="port7"
-    port7=7,
+    Port7=7,
     //% block="port8"
-    port8=8,
+    Port8=8,
 }
 
 /**
