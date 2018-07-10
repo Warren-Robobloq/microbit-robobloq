@@ -19,5 +19,7 @@
     "portEnum.Port6|block":"端口6",
     "portEnum.Port7|block":"端口7",
     "portEnum.Port8|block":"端口8",
-    "lightEnum.double|block":"双灯"
+    "lightEnum.Double|block":"双灯",
+    "lightEnum.Left|block":"左灯",
+    "lightEnum.Right|block":"右灯"
 }
