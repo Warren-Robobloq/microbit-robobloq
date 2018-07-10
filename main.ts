@@ -8,7 +8,7 @@
  * lightEnum
  */
 enum lightEnum {
-    //% block="double-light"
+    //% block="Double"
     double =0,
     //% block="left-light"
     left= -4,
@@ -338,7 +338,7 @@ namespace robobloq {
             }
             return 0;
         }
-        
+
         /**
          * 获取超声波数值
          *

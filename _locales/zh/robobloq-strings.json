@@ -10,5 +10,14 @@
     "enumSoundTime.Quarter|block":"四分之一",
     "enumSoundTime.Eighth|block":"八分之一",
     "enumSoundTime.Whole|block":"整拍",
-    "enumSoundTime.Double|block":"双拍"
+    "enumSoundTime.Double|block":"双拍",
+    "portEnum.port1|block":"端口1",
+    "portEnum.port2|block":"端口2",
+    "portEnum.port3|block":"端口3",
+    "portEnum.port4|block":"端口4",
+    "portEnum.port5|block":"端口5",
+    "portEnum.port6|block":"端口6",
+    "portEnum.port7|block":"端口7",
+    "portEnum.port8|block":"端口8",
+    "lightEnum.double|block":"双灯"
 }
