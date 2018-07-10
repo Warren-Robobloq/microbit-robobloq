@@ -4,6 +4,9 @@
  * 使用此文件来定义自定义函数和图形块。
  * 想了解更详细的信息，请前往 https://makecode.microbit.org/blocks/custom
  */
+/**
+ * lightEnum
+ */
 enum lightEnum {
     //% block="double-light"
     double =0,
@@ -13,6 +16,9 @@ enum lightEnum {
     right = -5
 }
 
+/**
+ * portEnum
+ */
 enum portEnum {
     //% block="port1"
     port1=1,
@@ -32,19 +38,25 @@ enum portEnum {
     port8=8,
 }
 
+/**
+ * enumSoundTime
+ */
 enum enumSoundTime {
     //% block="Half"
     Half=500,
     //% block="Quarter"
-    quarter=250,
+    Quarter=250,
     //% block="Eighth"
-    eighth=125,
+    Eighth=125,
     //% block="Whole"
-    whole=1000,
+    Whole=1000,
     //% block="Double"
-    double=2000
+    Double=2000
 }
 
+/**
+ * enumSoundRate
+ */
 enum enumSoundRate {
     //% block="C2"
     C2 = 65,
@@ -154,15 +166,6 @@ namespace robobloq {
     let flagInit :number = 0;
     const pro = new Protocol();
     const rb = new Robot();
-    //let data ="";
-    
-    // blockId="ts1" block="ts1 %e "
-    // export function ts1(e:portEnum): number {
-    //     let oid = rb.orderId();
-    //     let list = pro.getUltrasonicValue(oid,e);
-    //     console.log(pro.listToString( list) );
-    //     return 1 ;
-    // }
 
     //% blockId="robobloqInit" block="Robobloq init"
     export function robobloqInit(): void {
@@ -187,17 +190,6 @@ namespace robobloq {
         return pro.parseUltrasonicValue(item);
     }
 
-    // blockId="testBack" block="testBack set %e| in LED panel red %red|green %green | blue %blue"
-    // export function testBack(e:lightEnum,red:number,green:number,blue:number): number {
-    //     let oid = rb.orderId();
-    //     let list = pro.setLed(oid,e,red,green,blue);
-    //     rb.write(list);
-    //     basic.pause(200);
-    //     rb.read();
-    //     let item = rb.getDataItem(oid,0);
-    //     return pro.getTestLeb(item);
-    // }
-
     //% blockId="setBuzzer" block="play note on %rate | beat %time |s"
     export function setBuzzer(rate:enumSoundRate, time:enumSoundTime): void {
         let oid = 0;
@@ -220,25 +212,6 @@ namespace robobloq {
         let list = pro.setMove(oid,m1Speed, m2Speed);
         rb.write(list);
     }
-
-    // blockId="testSound" block="testSound"
-    // export function testSound(): void {
-    //     //5242 0b04 13fa 052a 03e8 ca
-    //     let date = pins.createBuffer(11)
-    //     date.setNumber(NumberFormat.Int8LE, 0, 0x52)
-    //     date.setNumber(NumberFormat.Int8LE, 1, 0x42)
-    //     date.setNumber(NumberFormat.Int8LE, 2, 0x0b)
-    //     date.setNumber(NumberFormat.Int8LE, 3, 0x04)
-    //     date.setNumber(NumberFormat.Int8LE, 4, 0x13)
-    //     date.setNumber(NumberFormat.Int8LE, 5, 0xfa)
-    //     date.setNumber(NumberFormat.Int8LE, 6, 0x05)
-    //     date.setNumber(NumberFormat.Int8LE, 7, 0x2a)
-    //     date.setNumber(NumberFormat.Int8LE, 8, 0x03)
-    //     date.setNumber(NumberFormat.Int8LE, 9, 0xe8)
-    //     date.setNumber(NumberFormat.Int8LE, 10, 0xca)
-    //     serial.writeBuffer(date)
-    //     basic.pause(1500)
-    // }
 
     /**
      * robot
@@ -263,7 +236,6 @@ namespace robobloq {
             }
             return this.OrderIndex;
         }
-
 
         /**
          * 取主板返回的数据
@@ -348,7 +320,6 @@ namespace robobloq {
                 BaudRate.BaudRate115200
             )
             this.init();
-            //let onBuffer: Buffer = serial.readBuffer(64);
             // 要加这个[serial.readString]，如果不加会卡死；
             let data2 = serial.readString();
             this.dataPush(data2);
@@ -367,20 +338,7 @@ namespace robobloq {
             }
             return 0;
         }
-
-        // getPortValue(e:portEnum):number{
-        //     let v :number =2;
-        //     if(e = portEnum.port1) v= 1;
-        //     else if(e = portEnum.port2) v= 2;
-        //     else if(e = portEnum.port3) v= 3;
-        //     else if(e = portEnum.port4) v= 4;
-        //     else if(e = portEnum.port5) v= 5;
-        //     else if(e = portEnum.port6) v= 6;
-        //     else if(e = portEnum.port7) v= 7;
-        //     else if(e = portEnum.port8) v= 8;
-        //     return v;
-        // }
-
+        
         /**
          * 获取超声波数值
          *
