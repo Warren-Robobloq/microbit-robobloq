@@ -6,5 +6,5 @@
     "robobloq.setBuzzer|block": "set sound rate %rate|time %time",
     "robobloq.setUltrasonicLight|block": "set %e| in UltrasonicLight panel red %red|green %green | blue %blue",
     "robobloq.setMove|block": "set Move M1 %m1Speed|M2 %m2Speed",
-    "lightEnumDouble|block":"双灯"
+    "robobloq.lightEnumDouble|block":"双灯"
 }
