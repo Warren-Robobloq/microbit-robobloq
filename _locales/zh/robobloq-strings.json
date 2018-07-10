@@ -1,7 +1,10 @@
 {
     "robobloq|block": "魔洛克",
-    "robobloq.gsTest|block": "开启测试",
-    "robobloq.gsLightRgb|block": "RGB测试",
-    "robobloq.areaOfRectangle|block": "長方形面積 長 %length|寬 %width",
-    "robobloq.ledOfRectangle|block": "LED顯示長方形面積 長 %length|寬 %width"
+    "robobloq.robobloqInit|block": "初始化",
+    "robobloq.lightRgb|block": "set %e| in LED panel red %red|green %green | blue %blue",
+    "robobloq.getUltrasonicValue|block": "read ultrasonic sensor %e",
+    "robobloq.setBuzzer|block": "set sound rate %rate|time %time",
+    "robobloq.setUltrasonicLight|block": "set %e| in UltrasonicLight panel red %red|green %green | blue %blue",
+    "robobloq.setMove|block": "set Move M1 %m1Speed|M2 %m2Speed",
+    "lightEnum.double|block": "双灯"
 }
