@@ -5,7 +5,7 @@
  * 想了解更详细的信息，请前往 https://makecode.microbit.org/blocks/custom
  */
 enum lightEnum {
-    //% block="double"
+    //% blockId="lightEnumDouble" block="double-light"
     double =0,
     //% block="left"
     left= -4,
@@ -174,7 +174,6 @@ namespace robobloq {
         let oid = 0;// rb.orderId(); //0;
         let list = pro.setLed(oid,e,red,green,blue);
         rb.write(list);
-        //console.log("rb:led:"+ oid );
     }
 
     //% blockId="getUltrasonicValue" block="read ultrasonic sensor %e"
