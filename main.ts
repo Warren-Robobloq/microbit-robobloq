@@ -34,7 +34,7 @@ enum portEnum {
 
 enum enumSoundTime {
     //% block="Half"
-    half=500,
+    Half=500,
     //% block="Quarter"
     quarter=250,
     //% block="Eighth"

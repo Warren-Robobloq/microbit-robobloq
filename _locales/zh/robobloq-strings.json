@@ -6,5 +6,8 @@
     "robobloq.setBuzzer|block": "播放 %rate|音调 %time | 节拍",
     "robobloq.setUltrasonicLight|block": "设置 %e| 超声波颜色 红 %red|绿 %green |蓝 %blue",
     "robobloq.setMove|block": "设置M1速度 %m1Speed|M2速度 %m2Speed",
-    "lightEnum.double|block":"双灯"
+    "lightEnum.double|block":"双灯",
+    "lightEnum.left-light|block":"左灯",
+    "lightEnum.right-light|block":"右灯",
+    "enumSoundTime.Half|block":"半拍"
 }
