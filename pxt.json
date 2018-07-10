@@ -1,7 +1,7 @@
 {
-    "name": "Robobloq",
-    "version": "0.0.3",
-    "description": "这是控制Robobloq的micro:bit积木(1.0.1)",
+    "name": "robobloq",
+    "version": "1.0.1",
+    "description": "这是控制Robobloq的micro:bit积木",
     "license": "MIT",
     "dependencies": {
         "core": "*"
