@@ -1,10 +1,10 @@
 {
     "robobloq|block": "魔洛克",
     "robobloq.robobloqInit|block": "初始化",
-    "robobloq.lightRgb|block": "set %e| in LED panel red %red|green %green | blue %blue",
-    "robobloq.getUltrasonicValue|block": "read ultrasonic sensor %e",
-    "robobloq.setBuzzer|block": "set sound rate %rate|time %time",
-    "robobloq.setUltrasonicLight|block": "set %e| in UltrasonicLight panel red %red|green %green | blue %blue",
-    "robobloq.setMove|block": "set Move M1 %m1Speed|M2 %m2Speed",
+    "robobloq.lightRgb|block": "设置板载 %e| 红 %red|绿 %green | 蓝 %blue",
+    "robobloq.getUltrasonicValue|block": " %e| 超声波传感器数值(cm)",
+    "robobloq.setBuzzer|block": "播放 %rate|音调 %time | 节拍",
+    "robobloq.setUltrasonicLight|block": "设置 %e| 超声波颜色 红 %red|绿 %green |蓝 %blue",
+    "robobloq.setMove|block": "设置M1速度 %m1Speed|M2速度 %m2Speed",
     "robobloq.lightEnumDouble|block":"双灯"
 }

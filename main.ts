@@ -7,9 +7,9 @@
 enum lightEnum {
     //% blockId="lightEnumDouble" block="double-light"
     double =0,
-    //% block="left"
+    //% block="left-light"
     left= -4,
-    //% block="right"
+    //% block="right-light"
     right = -5
 }
 
@@ -198,7 +198,7 @@ namespace robobloq {
     //     return pro.getTestLeb(item);
     // }
 
-    //% blockId="setBuzzer" block="set sound rate %rate|time %time"
+    //% blockId="setBuzzer" block="play note on %rate | beat %time |s"
     export function setBuzzer(rate:enumSoundRate, time:enumSoundTime): void {
         let oid = 0;
         let list = pro.setBuzzer(oid,rate,time);
@@ -207,14 +207,14 @@ namespace robobloq {
         basic.pause(time);
     }
 
-    //% blockId="setUltrasonicLight" block="set %e| in UltrasonicLight panel red %red|green %green | blue %blue"
+    //% blockId="setUltrasonicLight" block="set %e| the ultrasonic red %red|green %green | blue %blue"
     export function setUltrasonicLight(e:portEnum,red:number,green:number,blue:number): void {
         let oid = 0;
         let list = pro.setUltrasonicLight(oid,e,red,green,blue);
         rb.write(list);
     }
 
-    //% blockId="setMove" block="set Move M1 %m1Speed|M2 %m2Speed"
+    //% blockId="setMove" block="set motor M1 %m1Speed|M2 %m2Speed"
     export function setMove(m1Speed:number, m2Speed:number): void {
         let oid = 0;
         let list = pro.setMove(oid,m1Speed, m2Speed);
