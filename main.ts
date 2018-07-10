@@ -4,8 +4,6 @@
  * 使用此文件来定义自定义函数和图形块。
  * 想了解更详细的信息，请前往 https://makecode.microbit.org/blocks/custom
  */
-
-
 enum lightEnum {
     //% block="double"
     double =0,
@@ -147,10 +145,11 @@ enum enumSoundRate {
     //% block="B8"
     B8 = 7902
 }
+
 /**
  * 自定义图形块
  */
-//% weight=0 color=#3CB371 icon="\uf0ad" block="Roboloq"
+//% weight=0 color=#3CB371 icon="\uf0ad" block="roboloq"
 namespace robobloq {
     let flagInit :number = 0;
     const pro = new Protocol();
