@@ -1,7 +1,7 @@
 {
     "name": "robobloq",
     "version": "1.0.1",
-    "description": "Robobloq blocks!",
+    "description": "Robobloq blocks",
     "license": "MIT",
     "dependencies": {
         "core": "*"
