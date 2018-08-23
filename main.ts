@@ -317,7 +317,7 @@ namespace robobloq {
             serial.redirect(
                 SerialPin.P1,
                 SerialPin.P0,
-                BaudRate.BaudRate115200
+                BaudRate.BaudRate57600 //BaudRate115200
             )
             this.init();
             // 要加这个[serial.readString]，如果不加会卡死；
