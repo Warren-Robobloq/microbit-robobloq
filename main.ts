@@ -315,8 +315,8 @@ namespace robobloq {
         SystemInit(): void {
             if(flagInit ==1) return;
             serial.redirect(
-                SerialPin.P1,
                 SerialPin.P0,
+                SerialPin.P1,
                 BaudRate.BaudRate57600 //BaudRate115200
             )
             this.init();
