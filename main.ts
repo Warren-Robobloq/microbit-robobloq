@@ -18,6 +18,16 @@ enum lightEnum {
 }
 
 /**
+ * setDirection
+ */
+enum directionEnum{
+    up = 0,
+    after = 1,
+    left = 2,
+    right = 3
+}
+
+/**
  * portEnum
  */
 enum portEnum {
@@ -180,12 +190,6 @@ namespace robobloq {
         rb.write(list);
     }
 
-    export function lightRgb2(e:lightEnum, red : number, green: number, blue: number): void{
-        let oid = 0;
-        let list = pro.setLed(oid, e, red, green, blue);
-        rb.write(list);
-    }
-
     //% blockId="getUltrasonicValue" block="read ultrasonic sensor %e"
     export function getUltrasonicValue(e:portEnum): number {
         let oid = rb.orderId();
@@ -219,6 +223,35 @@ namespace robobloq {
         let list = pro.setMove(oid,m1Speed, m2Speed);
         rb.write(list);
     }
+
+    //% blockId="setMove2" block="set motor %Direction|Speed %Speed"
+    export function setMove2(Direction:directionEnum, Speed:number): void {
+        let oid = 0;
+        let right = 0;
+        let left = 0;
+        switch(Direction){
+        case 0:
+            right = Speed;
+            left = Speed;
+            break;
+        case 1:
+            right = -Speed;
+            left = -Speed;
+            break;
+        case 2:
+            right = -Speed;
+            left = Speed;
+            break;
+        case 3:
+            right = Speed;
+            left = -Speed;
+            break;
+        }
+        let list = pro.setMove(oid,right, left);
+        rb.write(list);
+    }
+
+    
 
     /**
      * robot
