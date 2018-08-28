@@ -28,6 +28,13 @@ enum directionEnum{
     right = 3
 }
 
+enum mp3Enum1{
+    play = 0,
+    stop = 1,
+    up = 2,
+    down = 3
+}
+
 /**
  * setEngine
  */
@@ -259,7 +266,32 @@ namespace robobloq {
         let list = pro.setMove(oid,right, left);
         rb.write(list);
     }
-    
+
+    //% blockId="setMp3" block="mp3模块 %port| %action"
+    export function setMp3(port: portEnum, action: mp3Enum1): void{
+        let oid = 0;
+        let info = 0;
+        switch(action){
+        case 0:
+            action = 0x04;
+            info = 0x02;
+            break;
+        case 1:
+            action = 0x04;
+            info = 0x01;
+            break;
+        case 2:
+            action = 0x05;
+            info = 0x01;
+            break;
+        case 3:
+            action = 0x05;
+            info = 0x02;
+             break;
+        }
+        let list = pro.setMp3(oid, port,action, info);
+        rb.write(list);
+    }
     //% blockId="setEngine" block="设置舵机 %port |插头%type |角度为%angle"
     export function setEngine(port: portEnum, type: engineEnum, angle: number): void {
         let oid = 0;
@@ -269,8 +301,7 @@ namespace robobloq {
     }
     //% blockId="getSoundValue" block="%port |获取声音传感器数值"
     export function getSoundValue(port: portEnum): number {
-        let orid = 0;
-        let radian2 = 0; 
+        let orid = rb.orderId();
         let list = pro.getSoundValue(orid, port);
         rb.write(list);
         basic.pause(200);
@@ -280,8 +311,7 @@ namespace robobloq {
     }
     //% blockId="getLightValue" block="%port |获取光线传感器数值"
     export function getLightValue(port: portEnum): number {
-        let orid = 0;
-        let radian2 = 0; 
+        let orid = rb.orderId();
         let list = pro.getLightValue(orid, port);
         rb.write(list);
         basic.pause(200);
@@ -291,8 +321,7 @@ namespace robobloq {
     }
     //% blockId="getHomanValue" block="%port |获取人体传感器数值"
     export function getHomanValue(port: portEnum): number {
-        let orid = 0;
-        let radian2 = 0; 
+        let orid = rb.orderId();
         let list = pro.getHomanValue(orid, port);
         rb.write(list);
         basic.pause(200);
@@ -302,8 +331,7 @@ namespace robobloq {
     }
     //% blockId="getTemperatureValue" block="%port |获取温度传感器数值"
     export function getTemperatureValue(port: portEnum): number {
-        let orid = 0;
-        let radian2 = 0; 
+        let orid = rb.orderId();
         let list = pro.getTemperatureValue(orid, port);
         rb.write(list);
         basic.pause(200);
@@ -313,8 +341,7 @@ namespace robobloq {
     }
     //% blockId="getHumidityValue" block="%port |获取湿度传感器数值"
     export function getHumidityValue(port: portEnum): number {
-        let orid = 0;
-        let radian2 = 0; 
+        let orid = rb.orderId();
         let list = pro.getTemperatureValue(orid, port);
         rb.write(list);
         basic.pause(200);
@@ -541,6 +568,29 @@ namespace robobloq {
             return list;
         }
 
+        /*
+          let size = 10;
+        let buffer = Buffer.alloc(size);
+        buffer.write('RB', 0, 2, 'utf8');
+        buffer.writeUInt8(size, 2, false);
+        buffer.writeUInt8(orderId, 3, false);
+        buffer.writeUInt8(actions.set_mp3_sensor, 4, false);
+        buffer.writeInt8(port, 5, false);
+        buffer.writeInt8(are, 6, false);
+        buffer.writeInt8(order, 7, false);
+        buffer.writeInt8(info, 8, false);
+        buffer.writeUInt8(this.sumCheck(buffer), 9, false);
+        return Buffer.from(buffer);
+
+        */
+        // 设置 mp3播放歌曲
+        setMp3(order: number, port: number,action: number, info: number ): number[]{
+            let size: number = 10 ;
+            let list: number[]= [82,66, size, order, 0x1C, port, 0x03, action, info,0];
+            list[size-1] = this.sumCheck(list,0);
+            return list;
+        }
+
         // 设置舵机角度
         setEngine(order: number, port: number, engine: number, radian1: number, radian2:number): number[]{
             let size: number = 10 ;
@@ -584,8 +634,6 @@ namespace robobloq {
             list[size-1] = this.sumCheck(list,0);
             return list;
         }
-
-
 
         setMotor(order:number, port:number, speed:number):number[]{
             let size:number = 8 ;

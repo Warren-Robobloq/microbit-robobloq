@@ -14,6 +14,7 @@
     "robobloq.getTemperatureValue|block": "%port| 获取温度传感器数值",
     "robobloq.getHumidityValue|block": "%port| 获取湿度传感器数值",
     "robobloq.getGyroValue|block": "%port| 获取陀螺仪传感器数值",
+    "robobloq.setMp3|block": "mp3模块 %port| %action",
 
 
 
@@ -37,5 +38,11 @@
     "directionEnum.up|block": "向前",
     "directionEnum.after|block": "向后",
     "directionEnum.left|block": "向左",
-    "directionEnum.right|block": "向右"
+    "directionEnum.right|block": "向右",
+    "mp3Enum1.play|block": "播放歌曲",
+    "mp3Enum1.stop|block": "暂停歌曲",
+    "mp3Enum1.up|block": "上一首",
+    "mp3Enum1.down|block": "下一首"
+
+
 }
