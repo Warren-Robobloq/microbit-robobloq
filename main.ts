@@ -278,7 +278,50 @@ namespace robobloq {
         let item = rb.getDataItem(orid,0);
         return pro.parseSoundValue(item);
     }
-
+    //% blockId="getLightValue" block="%port |获取光线传感器数值"
+    export function getLightValue(port: portEnum): number {
+        let orid = 0;
+        let radian2 = 0; 
+        let list = pro.getLightValue(orid, port);
+        rb.write(list);
+        basic.pause(200);
+        rb.read();
+        let item = rb.getDataItem(orid,0);
+        return pro.parseLightValue(item);
+    }
+    //% blockId="getHomanValue" block="%port |获取人体传感器数值"
+    export function getHomanValue(port: portEnum): number {
+        let orid = 0;
+        let radian2 = 0; 
+        let list = pro.getHomanValue(orid, port);
+        rb.write(list);
+        basic.pause(200);
+        rb.read();
+        let item = rb.getDataItem(orid,0);
+        return pro.parseHomanValue(item);
+    }
+    //% blockId="getTemperatureValue" block="%port |获取温度传感器数值"
+    export function getTemperatureValue(port: portEnum): number {
+        let orid = 0;
+        let radian2 = 0; 
+        let list = pro.getTemperatureValue(orid, port);
+        rb.write(list);
+        basic.pause(200);
+        rb.read();
+        let item = rb.getDataItem(orid,0);
+        return pro.parseTemperatureValue(item);
+    }
+    //% blockId="getHumidityValue" block="%port |获取湿度传感器数值"
+    export function getHumidityValue(port: portEnum): number {
+        let orid = 0;
+        let radian2 = 0; 
+        let list = pro.getTemperatureValue(orid, port);
+        rb.write(list);
+        basic.pause(200);
+        rb.read();
+        let item = rb.getDataItem(orid,0);
+        return pro.parseHumidityValue(item);  
+    }
     /**
      * robot
      */
@@ -431,6 +474,30 @@ namespace robobloq {
             const value = itme[5]* 256 + itme[6];
             return value;
         }
+        // 获取光线传感器数值
+        parseLightValue (itme: number[]): number{
+            if (!itme || itme.length <= 5) return 0;
+            const value = itme[5]* 256 + itme[6];
+            return value;
+        }
+        // 获取人体红外传感器数值
+        parseHomanValue(itme: number[]): number{
+            if (!itme || itme.length <= 5) return 0;
+            const value = itme[5];
+            return value;
+        }
+        // 获取温度传感器数值
+        parseTemperatureValue(itme: number[]): number{
+            if (!itme || itme.length <= 5) return 0;
+            const value = itme[5] + itme[6];
+            return value;
+        }
+        //获取湿度传感器数值
+        parseHumidityValue(itme: number[]): number{
+            if (!itme || itme.length <= 5) return 0;
+            const value = itme[5];
+            return value;
+        }
         /**
          * 设置超声波灯光
          */
@@ -489,6 +556,35 @@ namespace robobloq {
             list[size-1] = this.sumCheck(list,0);
             return list;
         }
+        // 获取光线传感器数值
+        getLightValue(order: number, port: number): number[]{
+            let size: number = 7 ;
+            let list: number[]= [82,66, size, order, 0xA6, port,0];
+            list[size-1] = this.sumCheck(list,0);
+            return list;
+        }
+        // 获取人体红外传感器数值
+        getHomanValue(order: number, port: number): number[]{
+            let size: number = 7 ;
+            let list: number[]= [82,66, size, order, 0XA8, port,0];
+            list[size-1] = this.sumCheck(list,0);
+            return list;
+        }
+        // 获取温度传感器数值 获取湿度传感器数值
+        getTemperatureValue(order: number, port: number): number[]{
+            let size: number = 7 ;
+            let list: number[]= [82,66, size, order, 0xA5, port,0];
+            list[size-1] = this.sumCheck(list,0);
+            return list;
+        }
+        // 获取陀螺仪传感器数值
+        getGyroValue(order: number, port: number): number[]{
+            let size: number = 7 ;
+            let list: number[]= [82,66, size, order, 0XA9, port,0];
+            list[size-1] = this.sumCheck(list,0);
+            return list;
+        }
+
 
 
         setMotor(order:number, port:number, speed:number):number[]{

@@ -9,7 +9,13 @@
     "robobloq.setMove2|block": "设置 %1Direction |速度为 %m2Speed",
     "robobloq.setEngine|block": "设置舵机 %Port |插头%Type |角度为%Angle",
     "robobloq.getsoundValue|block": "%port| 获取声音传感器数值",
-    
+    "robobloq.getLightValue|block": "%port| 获取光线传感器数值",
+    "robobloq.getHomanValue|block": "%port| 获取人体传感器数值",
+    "robobloq.getTemperatureValue|block": "%port| 获取温度传感器数值",
+    "robobloq.getHumidityValue|block": "%port| 获取湿度传感器数值",
+    "robobloq.getGyroValue|block": "%port| 获取陀螺仪传感器数值",
+
+
 
 
     "enumSoundTime.Half|block":"二分之一",
