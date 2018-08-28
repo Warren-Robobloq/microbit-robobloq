@@ -1,7 +1,8 @@
 {
-    "robobloq|block": "魔洛克A",
+    "robobloq|block": "魔洛克",
     "robobloq.robobloqInit|block": "初始化",
     "robobloq.lightRgb|block": "设置板载 %e| 红 %red|绿 %green | 蓝 %blue",
+    "robobloq.lightRgb2|block": "设置板载 %e| 红 %red|绿 %green | 蓝 %blue",
     "robobloq.getUltrasonicValue|block": " %e| 超声波传感器数值(cm)",
     "robobloq.setBuzzer|block": "播放 %rate|音调 %time | 节拍",
     "robobloq.setUltrasonicLight|block": "设置 %e| 超声波颜色 红 %red|绿 %green |蓝 %blue",

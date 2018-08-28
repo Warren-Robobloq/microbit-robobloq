@@ -1,4 +1,5 @@
 
+
 /**
  * 37907909@qq.com
  * 使用此文件来定义自定义函数和图形块。
@@ -176,6 +177,12 @@ namespace robobloq {
     export function lightRgb(e:lightEnum,red:number,green:number,blue:number): void {
         let oid = 0;// rb.orderId(); //0;
         let list = pro.setLed(oid,e,red,green,blue);
+        rb.write(list);
+    }
+
+    export function lightRgb2(e:lightEnum, red : number, green: number, blue: number): void{
+        let oid = 0;
+        let list = pro.setLed(oid, e, red, green, blue);
         rb.write(list);
     }
 
