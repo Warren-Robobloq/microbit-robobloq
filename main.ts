@@ -28,6 +28,14 @@ enum directionEnum{
 }
 
 /**
+ * setEngine
+ */
+enum engineEnum{
+    m1 = 1,
+    m2 = 2
+}
+
+/**
  * portEnum
  */
 enum portEnum {
@@ -250,7 +258,16 @@ namespace robobloq {
         let list = pro.setMove(oid,right, left);
         rb.write(list);
     }
+    
+    //% blockId="setEngine" block="设置舵机 %port |插头%type |角度为%angle"
+    export function setEngine(port: portEnum, type: engineEnum, angle: number): void {
+        let oid = 0;
+        let radian2 = 0; 
+        let list = pro.setEngine(oid, port, type, angle, radian2);
+        rb.write(list);
+    }
 
+    
     
 
     /**
@@ -441,6 +458,16 @@ namespace robobloq {
             list[size-1] = this.sumCheck(list,0);
             return list;
         }
+
+        // 设置舵机角度
+        setEngine(order: number, port: number, engine: number, radian1: number, radian2:number): number[]{
+            let size: number = 10 ;
+            let list: number[]= [82,66, size, order, 0x19, port, radian1, radian2,0];
+            list[size-1] = this.sumCheck(list,0);
+            return list;
+        }
+
+
 
         setMotor(order:number, port:number, speed:number):number[]{
             let size:number = 8 ;
