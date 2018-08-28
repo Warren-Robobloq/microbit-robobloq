@@ -7,7 +7,7 @@
     "robobloq.setUltrasonicLight|block": "设置 %e| 超声波颜色 红 %red|绿 %green |蓝 %blue",
     "robobloq.setMove|block": "设置M1速度 %m1Speed|M2速度 %m2Speed",
     "robobloq.setMove3|block": "设置M1速度 %m1Speed|M2速度 %m2Speed",
-    "robobloq.setMove2|block": "设置 %setMove 运动，速度为 %spee ", 
+
 
     "enumSoundTime.Half|block":"二分之一",
     "enumSoundTime.Quarter|block":"四分之一",
