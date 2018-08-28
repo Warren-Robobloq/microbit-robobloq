@@ -220,6 +220,11 @@ namespace robobloq {
         let list = pro.setMove(oid,m1Speed, m2Speed);
         rb.write(list);
     }
+    export function setMove3(m1Speed:number, m2Speed:number): void {
+        let oid = 0;
+        let list = pro.setMove(oid,m1Speed, m2Speed);
+        rb.write(list);
+    }
     // 板载电机
     export function setMove2(setMove:setMove, spee:number): void {
         let left = spee;
