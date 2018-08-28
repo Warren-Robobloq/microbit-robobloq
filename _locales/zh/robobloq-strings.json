@@ -1,5 +1,5 @@
 {
-    "robobloq|block": "魔洛克A",
+    "robobloq|block": "魔洛克ABCD",
     "robobloq.robobloqInit|block": "初始化",
     "robobloq.lightRgb|block": "设置板载 %e| 红 %red|绿 %green | 蓝 %blue",
     "robobloq.getUltrasonicValue|block": " %e| 超声波传感器数值(cm)",
