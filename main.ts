@@ -226,6 +226,7 @@ namespace robobloq {
         rb.write(list);
     }
     // 板载电机
+    /*
     export function setMove2(setMove:setMove, spee:number): void {
         let left = spee;
         let right = spee; 
@@ -251,6 +252,7 @@ namespace robobloq {
         let list = pro.setMove(oid,left, right);
         rb.write(list);
     }
+    */
 
     /**
      * robot
