@@ -2,16 +2,18 @@
     "robobloq|block": "魔洛克",
     "robobloq.robobloqInit|block": "初始化",
     "robobloq.lightRgb|block": "设置板载 %e| 红 %red|绿 %green | 蓝 %blue",
-    "robobloq.lightRgb2|block": "设置板载 %e| 红 %red|绿 %green | 蓝 %blue",
     "robobloq.getUltrasonicValue|block": " %e| 超声波传感器数值(cm)",
     "robobloq.setBuzzer|block": "播放 %rate|音调 %time | 节拍",
     "robobloq.setUltrasonicLight|block": "设置 %e| 超声波颜色 红 %red|绿 %green |蓝 %blue",
     "robobloq.setMove|block": "设置M1速度 %m1Speed|M2速度 %m2Speed",
+    "robobloq.setMove2|block": "设置 %setMove 运动，速度为 %spee ", 
+
     "enumSoundTime.Half|block":"二分之一",
     "enumSoundTime.Quarter|block":"四分之一",
     "enumSoundTime.Eighth|block":"八分之一",
     "enumSoundTime.Whole|block":"整拍",
     "enumSoundTime.Double|block":"双拍",
+
     "portEnum.Port1|block":"端口1",
     "portEnum.Port2|block":"端口2",
     "portEnum.Port3|block":"端口3",
@@ -20,7 +22,13 @@
     "portEnum.Port6|block":"端口6",
     "portEnum.Port7|block":"端口7",
     "portEnum.Port8|block":"端口8",
+
     "lightEnum.Double|block":"双灯",
     "lightEnum.Left|block":"左灯",
-    "lightEnum.Right|block":"右灯"
+    "lightEnum.Right|block":"右灯",
+
+    "setMove.Up|block": "向前",
+    "setMove.After|block": "向后",
+    "setMove.Right|block": "向右",
+    "setMove.Left|block": "向左"
 }

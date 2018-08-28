@@ -17,6 +17,13 @@ enum lightEnum {
     Right = -5
 }
 
+enum setMove{
+    Up = 0,
+    After = 1,
+    Right = 2,
+    Left = 3
+}
+
 /**
  * portEnum
  */
@@ -180,12 +187,6 @@ namespace robobloq {
         rb.write(list);
     }
 
-    export function lightRgb2(e:lightEnum, red : number, green: number, blue: number): void{
-        let oid = 0;
-        let list = pro.setLed(oid, e, red, green, blue);
-        rb.write(list);
-    }
-
     //% blockId="getUltrasonicValue" block="read ultrasonic sensor %e"
     export function getUltrasonicValue(e:portEnum): number {
         let oid = rb.orderId();
@@ -217,6 +218,32 @@ namespace robobloq {
     export function setMove(m1Speed:number, m2Speed:number): void {
         let oid = 0;
         let list = pro.setMove(oid,m1Speed, m2Speed);
+        rb.write(list);
+    }
+    // 板载电机
+    export function setMove2(setMove:setMove, spee:number): void {
+        let left = spee;
+        let right = spee; 
+        let oid = 0;
+        switch(setMove){
+        case 0:
+            left = spee;
+            right = spee;
+            break;
+        case 1:
+            left = -spee;
+            right = -spee;
+            break;
+        case 2:
+            left =  -spee;
+            right = spee;
+            break;
+        case 3:
+            left = -spee;
+            right = spee;
+            break;
+        }
+        let list = pro.setMove(oid,left, right);
         rb.write(list);
     }
 
@@ -402,12 +429,15 @@ namespace robobloq {
             return list;
         }
 
+        // 设置板载电机
         setMove(order:number, m1Speed:number, m2Speed:number):number[] {
             let size:number = 9 ;
             let list:number[]=[82,66,size,order, 0x11,0,m1Speed,m2Speed,0];
             list[size-1] = this.sumCheck(list,0);
             return list;
         }
+
+
 
         setMotor(order:number, port:number, speed:number):number[]{
             let size:number = 8 ;
