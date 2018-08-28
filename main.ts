@@ -5,6 +5,7 @@
  * 使用此文件来定义自定义函数和图形块。
  * 想了解更详细的信息，请前往 https://makecode.microbit.org/blocks/custom
  */
+/* global basic */
 /**
  * lightEnum
  */
@@ -266,9 +267,17 @@ namespace robobloq {
         let list = pro.setEngine(oid, port, type, angle, radian2);
         rb.write(list);
     }
-
-    
-    
+    //% blockId="getSoundValue" block="%port |获取声音传感器数值"
+    export function getSoundValue(port: portEnum): number {
+        let orid = 0;
+        let radian2 = 0; 
+        let list = pro.getSoundValue(orid, port);
+        rb.write(list);
+        basic.pause(200);
+        rb.read();
+        let item = rb.getDataItem(orid,0);
+        return pro.parseSoundValue(item);
+    }
 
     /**
      * robot
@@ -416,6 +425,12 @@ namespace robobloq {
             const value :number= itme[5]  * 256 + itme[6];
             return (value / 10);
         }
+        // 获取声音传感器数值
+        parseSoundValue(itme: number[]): number{
+            if (!itme || itme.length <= 5) return 0;
+            const value = itme[5]* 256 + itme[6];
+            return value;
+        }
         /**
          * 设置超声波灯光
          */
@@ -467,6 +482,13 @@ namespace robobloq {
             return list;
         }
 
+        // 获取声音传感器数值
+        getSoundValue(order: number, port: number): number[]{
+            let size: number = 7 ;
+            let list: number[]= [82,66, size, order, 0xA7, port,0];
+            list[size-1] = this.sumCheck(list,0);
+            return list;
+        }
 
 
         setMotor(order:number, port:number, speed:number):number[]{
