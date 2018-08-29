@@ -239,14 +239,14 @@ namespace robobloq {
         rb.write(list);
     }
 
-    //% blockId="setEngine" block="设置舵机 %port |插头%type |角度为%angle"
+    //% blockId="setEngine" block="set the steering gear %port |plug%type |angle%angle"
     export function setEngine(port: portEnum, type: engineEnum, angle: number): void {
         let oid = 0;
         let radian2 = 0; 
         let list = pro.setEngine(oid, port, type, angle, radian2);
         rb.write(list);
     }
-    //% blockId="setOutEngine" block="设置电机 %port |插头%type |%Direction |运动，以速度%speed"
+    //% blockId="setOutEngine" block="set the motor %port |plug%type |%Direction |motion, at speed%speed"
     export function setOutEngine(port: portEnum, type: engineEnum, Direction: directionEnum, speed:number): void {
         let order = 0;
         let list = pro.setOutEngine(order, port, type, speed, speed);
@@ -280,7 +280,7 @@ namespace robobloq {
         rb.write(list);
     }
 
-    //% blockId="setMp3" block="mp3模块 %port| %action"
+    //% blockId="setMp3" block="Mp3 %port| %action"
     export function setMp3(port: portEnum, action: mp3Enum1): void{
         let oid = 0;
         let info = 0;
@@ -305,13 +305,13 @@ namespace robobloq {
         let list = pro.setMp3(oid, port, action, info);
         rb.write(list);
     }
-    //% blockId="setMp3Sound" block="Mp3模块 %port |音量为%sound"
+    //% blockId="setMp3Sound" block="MP3 %port |sound%sound"
     export function setMp3Sound(port: portEnum, sound: number): void {
         let oid = 0;
         let list = pro.setMp3(oid, port, 0x03, sound);
         rb.write(list);
     }
-    //% blockId="getSoundValue" block="%port |获取声音传感器数值"
+    //% blockId="getSoundValue" block="%port |get the value of the sound sensor"
     export function getSoundValue(port: portEnum): number {
         let orid = rb.orderId();
         let list = pro.getSoundValue(orid, port);
@@ -321,7 +321,7 @@ namespace robobloq {
         let item = rb.getDataItem(orid,0);
         return pro.parseSoundValue(item);
     }
-    //% blockId="getLightValue" block="%port |获取光线传感器数值"
+    //% blockId="getLightValue" block="%port |get the light sensor value"
     export function getLightValue(port: portEnum): number {
         let orid = rb.orderId();
         let list = pro.getLightValue(orid, port);
@@ -331,7 +331,7 @@ namespace robobloq {
         let item = rb.getDataItem(orid,0);
         return pro.parseLightValue(item);
     }
-    //% blockId="getHomanValue" block="%port |获取人体传感器数值"
+    //% blockId="getHomanValue" block="%port |get the human sensor value"
     export function getHomanValue(port: portEnum): number {
         let orid = rb.orderId();
         let list = pro.getHomanValue(orid, port);
@@ -341,7 +341,7 @@ namespace robobloq {
         let item = rb.getDataItem(orid,0);
         return pro.parseHomanValue(item);
     }
-    //% blockId="getTemperatureValue" block="%port |获取温度传感器数值"
+    //% blockId="getTemperatureValue" block="%port |obtain the temperature sensor value"
     export function getTemperatureValue(port: portEnum): number {
         let orid = rb.orderId();
         let list = pro.getTemperatureValue(orid, port);
@@ -351,7 +351,7 @@ namespace robobloq {
         let item = rb.getDataItem(orid,0);
         return pro.parseTemperatureValue(item);
     }
-    //% blockId="getHumidityValue" block="%port |获取湿度传感器数值"
+    //% blockId="getHumidityValue" block="%port |obtain the humidity sensor value"
     export function getHumidityValue(port: portEnum): number {
         let orid = rb.orderId();
         let list = pro.getTemperatureValue(orid, port);
