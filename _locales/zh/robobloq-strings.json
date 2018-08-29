@@ -16,8 +16,7 @@
     "robobloq.getGyroValue|block": "%port| 获取陀螺仪传感器数值",
     "robobloq.setMp3|block": "Mp3模块 %port| %action",
     "robobloq.setMp3Sound|block": "Mp3模块 %port |音量为%sound",
-
-
+    "robobloq.setOutEngine|block": "设置电机 %port |插头%type |%Direction |运动，以速度%speed",
 
     "enumSoundTime.Half|block":"二分之一",
     "enumSoundTime.Quarter|block":"四分之一",

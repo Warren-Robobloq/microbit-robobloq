@@ -246,6 +246,13 @@ namespace robobloq {
         let list = pro.setEngine(oid, port, type, angle, radian2);
         rb.write(list);
     }
+    //% blockId="setOutEngine" block="设置电机 %port |插头%type |%Direction |运动，以速度%speed"
+    export function setOutEngine(port: portEnum, type: engineEnum, Direction: directionEnum, speed:number): void {
+        let order = 0;
+        let list = pro.setOutEngine(order, port, type, speed, speed);
+        rb.write(list);
+    }
+
     //% blockId="setMove2" block="set motor %Direction|Speed %Speed"
     export function setMove2(Direction:directionEnum, Speed:number): void {
         let oid = 0;
@@ -583,6 +590,13 @@ namespace robobloq {
             return list;
         }
 
+        // 设置外置电机
+        setOutEngine(order:number, port:number, engine:number, radian1:number, radian2:number): number[]{
+            let size: number = 10 ;
+            let list: number[]= [82,66, size, order,  0x1a, engine, radian1, radian2, 0];
+            list[size-1] = this.sumCheck(list,0);
+            return list;
+        }
         // 获取声音传感器数值
         getSoundValue(order: number, port: number): number[]{
             let size: number = 7 ;
