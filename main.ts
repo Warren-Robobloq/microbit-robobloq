@@ -5,10 +5,8 @@
  * 使用此文件来定义自定义函数和图形块。
  * 想了解更详细的信息，请前往 https://makecode.microbit.org/blocks/custom
  */
-/* global basic */
-/**
- * lightEnum
- */
+
+// lightEnum
 enum lightEnum {
     //% block="double-light"
     Double =0,
@@ -18,34 +16,39 @@ enum lightEnum {
     Right = -5
 }
 
-/**
- * setDirection
- */
+// setDirection
 enum directionEnum{
+    //% block="forward"
     up = 0,
+    //% block="backward"
     after = 1,
+    //% block="turn left"
     left = 2,
+    //% block="turn right"
     right = 3
 }
 
+// mp3Enum1
 enum mp3Enum1{
+    //% block="play sound"
     play = 0,
+    //% block="pause"
     stop = 1,
+    //% block="previous sound"
     up = 2,
+    //% block="next sound"
     down = 3
 }
 
-/**
- * setEngine
- */
+// setEngine
 enum engineEnum{
+    //% block="M1"
     m1 = 1,
+    //% block="M2"
     m2 = 2
 }
 
-/**
- * portEnum
- */
+//  portEnum
 enum portEnum {
     //% block="port1"
     Port1=1,
@@ -65,9 +68,7 @@ enum portEnum {
     Port8=8
 }
 
-/**
- * enumSoundTime
- */
+// enumSoundTime
 enum enumSoundTime {
     //% block="Half"
     Half=500,
@@ -81,9 +82,7 @@ enum enumSoundTime {
     Double=2000
 }
 
-/**
- * enumSoundRate
- */
+// enumSoundRate
 enum enumSoundRate {
     //% block="C2"
     C2 = 65,
@@ -240,6 +239,13 @@ namespace robobloq {
         rb.write(list);
     }
 
+    //% blockId="setEngine" block="设置舵机 %port |插头%type |角度为%angle"
+    export function setEngine(port: portEnum, type: engineEnum, angle: number): void {
+        let oid = 0;
+        let radian2 = 0; 
+        let list = pro.setEngine(oid, port, type, angle, radian2);
+        rb.write(list);
+    }
     //% blockId="setMove2" block="set motor %Direction|Speed %Speed"
     export function setMove2(Direction:directionEnum, Speed:number): void {
         let oid = 0;
@@ -289,14 +295,13 @@ namespace robobloq {
             info = 0x02;
              break;
         }
-        let list = pro.setMp3(oid, port,action, info);
+        let list = pro.setMp3(oid, port, action, info);
         rb.write(list);
     }
-    //% blockId="setEngine" block="设置舵机 %port |插头%type |角度为%angle"
-    export function setEngine(port: portEnum, type: engineEnum, angle: number): void {
+    //% blockId="setMp3Sound" block="Mp3模块 %port |音量为%sound"
+    export function setMp3Sound(port: portEnum, sound: number): void {
         let oid = 0;
-        let radian2 = 0; 
-        let list = pro.setEngine(oid, port, type, angle, radian2);
+        let list = pro.setMp3(oid, port, 0x03, sound);
         rb.write(list);
     }
     //% blockId="getSoundValue" block="%port |获取声音传感器数值"
@@ -487,9 +492,7 @@ namespace robobloq {
             list[size-1] = this.sumCheck(list,0);
             return list;
         }
-        /**
-         * 获取超声波数值（单位 cm）
-         */
+        //  获取超声波数值（单位 cm）
         parseUltrasonicValue(itme:number[]):number {
             if (!itme || itme.length < 6) return 0;
             const value :number= itme[5]  * 256 + itme[6];
@@ -519,15 +522,13 @@ namespace robobloq {
             const value = itme[5] + itme[6];
             return value;
         }
-        //获取湿度传感器数值
+        // 获取湿度传感器数值
         parseHumidityValue(itme: number[]): number{
             if (!itme || itme.length <= 5) return 0;
             const value = itme[5];
             return value;
         }
-        /**
-         * 设置超声波灯光
-         */
+        // 设置超声波灯光
         setUltrasonicLight(order:number, port:number, red:number, green:number, blue:number) :number[] {
             let size:number = 10 ;
             let list:number[]=[82,66,size,order, 0x12,port,red,green,blue,0];
@@ -535,9 +536,7 @@ namespace robobloq {
             return list; 
         }
 
-        /**
-        * 设置点阵屏
-        */
+        // 设置点阵屏
         setMatrix(order:number, port:number, rows:number[]):number[] {
             let size:number = 27 ;
             let list:number[]=[82,66,size,order, 0x14,port,rows[0],0];
@@ -551,7 +550,7 @@ namespace robobloq {
             list[size-1] = this.sumCheck(list,0);
             return list;
         }
-
+        // 设置
         setBuzzer(order:number, rate:number, time:number):number[] {
             let size:number = 11 ;
             let l1:number[] = this.Int16BE(rate);
@@ -560,7 +559,7 @@ namespace robobloq {
             list[size-1] = this.sumCheck(list,0);
             return list;
         }
-
+        // 板载电机
         setMove(order:number, m1Speed:number, m2Speed:number):number[] {
             let size:number = 9 ;
             let list:number[]=[82,66,size,order, 0x11,0,m1Speed,m2Speed,0];
@@ -568,21 +567,6 @@ namespace robobloq {
             return list;
         }
 
-        /*
-          let size = 10;
-        let buffer = Buffer.alloc(size);
-        buffer.write('RB', 0, 2, 'utf8');
-        buffer.writeUInt8(size, 2, false);
-        buffer.writeUInt8(orderId, 3, false);
-        buffer.writeUInt8(actions.set_mp3_sensor, 4, false);
-        buffer.writeInt8(port, 5, false);
-        buffer.writeInt8(are, 6, false);
-        buffer.writeInt8(order, 7, false);
-        buffer.writeInt8(info, 8, false);
-        buffer.writeUInt8(this.sumCheck(buffer), 9, false);
-        return Buffer.from(buffer);
-
-        */
         // 设置 mp3播放歌曲
         setMp3(order: number, port: number,action: number, info: number ): number[]{
             let size: number = 10 ;
@@ -641,7 +625,7 @@ namespace robobloq {
             list[size-1] = this.sumCheck(list,0);
             return list;
         }
-
+        // 设置板载灯
         setLed(order:number,port:number,red:number,green:number,blue:number):number[]{
             let size:number =10 ;
             let list:number[]=[82,66,size,order,16,port,red,green,blue,0];

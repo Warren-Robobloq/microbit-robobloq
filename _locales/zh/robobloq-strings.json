@@ -14,8 +14,8 @@
     "robobloq.getTemperatureValue|block": "%port| 获取温度传感器数值",
     "robobloq.getHumidityValue|block": "%port| 获取湿度传感器数值",
     "robobloq.getGyroValue|block": "%port| 获取陀螺仪传感器数值",
-    "robobloq.setMp3|block": "mp3模块 %port| %action",
-
+    "robobloq.setMp3|block": "Mp3模块 %port| %action",
+    "robobloq.setMp3Sound|block": "Mp3模块 %port |音量为%sound",
 
 
 
