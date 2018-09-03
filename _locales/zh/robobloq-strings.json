@@ -38,6 +38,8 @@
     "directionEnum.after|block": "向后",
     "directionEnum.left|block": "向左",
     "directionEnum.right|block": "向右",
+    "directionEnum2.clockwise|block": "顺时针",
+    "directionEnum2.anticlockwise|block": "逆时针",
     "mp3Enum1.play|block": "播放歌曲",
     "mp3Enum1.stop|block": "暂停歌曲",
     "mp3Enum1.up|block": "上一首",

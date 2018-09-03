@@ -28,6 +28,13 @@ enum directionEnum{
     right = 3
 }
 
+// setDirection
+enum directionEnum2{
+    //% block="clockwise"
+    clockwise = 0,
+    //% block="anticlockwise"
+    anticlockwise = 1,
+}
 // mp3Enum1
 enum mp3Enum1{
     //% block="play sound"
@@ -43,9 +50,9 @@ enum mp3Enum1{
 // setEngine
 enum engineEnum{
     //% block="M1"
-    m1 = 1,
+    m1 = 2,
     //% block="M2"
-    m2 = 2
+    m2 = 1
 }
 
 //  portEnum
@@ -247,8 +254,16 @@ namespace robobloq {
         rb.write(list);
     }
     //% blockId="setOutEngine" block="set the motor %port |plug%type |%Direction |motion, at speed%speed"
-    export function setOutEngine(port: portEnum, type: engineEnum, Direction: directionEnum, speed:number): void {
+    export function setOutEngine(port: portEnum, type: engineEnum, Direction: directionEnum2, speed:number): void {
         let order = 0;
+        switch(Direction){
+        case 0:
+            speed = speed;
+            break;
+        case 1:
+            speed = -speed;
+            break;
+        }
         let list = pro.setOutEngine(order, port, type, speed, speed);
         rb.write(list);
     }
@@ -593,7 +608,7 @@ namespace robobloq {
         // 设置外置电机
         setOutEngine(order:number, port:number, engine:number, radian1:number, radian2:number): number[]{
             let size: number = 10 ;
-            let list: number[]= [82,66, size, order,  0x1a, engine, radian1, radian2, 0];
+            let list: number[]= [82,66, size, order,  0x1a, port, engine, radian1, radian2, 0];
             list[size-1] = this.sumCheck(list,0);
             return list;
         }
