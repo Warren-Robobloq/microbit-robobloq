@@ -55,6 +55,14 @@ enum engineEnum{
     m2 = 1
 }
 
+// setEngine3
+enum engineEnum3{
+    //% block="M1"
+    m1 = 1,
+    //% block="M2"
+    m2 = 2
+}
+
 //  portEnum
 enum portEnum {
     //% block="port1"
@@ -247,10 +255,10 @@ namespace robobloq {
     }
 
     //% blockId="setEngine" block="set the steering gear %port |plug%type |angle%angle"
-    export function setEngine(port: portEnum, type: engineEnum, angle: number): void {
+    export function setEngine(port: portEnum, type: engineEnum3, radian1: number): void {
         let oid = 0;
         let radian2 = 0; 
-        let list = pro.setEngine(oid, port, type, angle, radian2);
+        let list = pro.setEngine(oid, port, type, radian1, radian2);
         rb.write(list);
     }
     //% blockId="setOutEngine" block="set the motor %port |plug%type |%Direction |motion, at speed%speed"
@@ -598,9 +606,9 @@ namespace robobloq {
         }
 
         // 设置舵机角度
-        setEngine(order: number, port: number, engine: number, radian1: number, radian2:number): number[]{
+        setEngine(order: number, port: number, type: number, radian1: number, radian2:number): number[]{
             let size: number = 10 ;
-            let list: number[]= [82,66, size, order, 0x19, port, radian1, radian2,0];
+            let list: number[]= [82,66, size, order, 0x19, port, type, radian1, radian2,0];
             list[size-1] = this.sumCheck(list,0);
             return list;
         }
