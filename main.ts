@@ -331,7 +331,13 @@ namespace robobloq {
     //% blockId="setMp3Sound" block="MP3 %port |sound%sound"
     export function setMp3Sound(port: portEnum, sound: number): void {
         let oid = 0;
-        let list = pro.setMp3(oid, port, 0x03, sound);
+        if(sound > 100){
+            sound = 100;
+        }
+        if(sound < 0){
+            sound = 0;
+        }
+        let list = pro.setMp3(oid, port, 0x03, sound/7);
         rb.write(list);
     }
     //% blockId="getSoundValue" block="%port |get the value of the sound sensor"
