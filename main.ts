@@ -350,7 +350,7 @@ namespace robobloq {
         let item = rb.getDataItem(orid,0);
         return pro.parseSoundValue(item);
     }
-    //% blockId="getLightValue" block="%port |get the light sensor value"
+   /*   blockId="getLightValue" block="%port |get the light sensor value"*/
     export function getLightValue(port: portEnum): number {
         let orid = rb.orderId();
         let list = pro.getLightValue(orid, port);
@@ -360,7 +360,7 @@ namespace robobloq {
         let item = rb.getDataItem(orid,0);
         return pro.parseLightValue(item);
     }
-    //% blockId="getHomanValue" block="%port |get the human sensor value"
+   /*   blockId="getHomanValue" block="%port |get the human sensor value"*/
     export function getHomanValue(port: portEnum): number {
         let orid = rb.orderId();
         let list = pro.getHomanValue(orid, port);
@@ -370,7 +370,7 @@ namespace robobloq {
         let item = rb.getDataItem(orid,0);
         return pro.parseHomanValue(item);
     }
-    //% blockId="getTemperatureValue" block="%port |get the temperature sensor value"
+    /*  blockId="getTemperatureValue" block="%port |get the temperature sensor value"*/
     export function getTemperatureValue(port: portEnum): number {
         let orid = rb.orderId();
         let list = pro.getTemperatureValue(orid, port);
@@ -380,7 +380,7 @@ namespace robobloq {
         let item = rb.getDataItem(orid,0);
         return pro.parseTemperatureValue(item);
     }
-    //% blockId="getHumidityValue" block="%port |get the humidity sensor value"
+    /* blockId="getHumidityValue" block="%port |get the humidity sensor value"*/
     export function getHumidityValue(port: portEnum): number {
         let orid = rb.orderId();
         let list = pro.getTemperatureValue(orid, port);
