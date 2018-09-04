@@ -370,22 +370,22 @@ namespace robobloq {
         let item = rb.getDataItem(orid,0);
         return pro.parseHomanValue(item);
     }
-    //% blockId="getTemperatureValue" block="%port |obtain the temperature sensor value"
+    //% blockId="getTemperatureValue" block="%port |get the temperature sensor value"
     export function getTemperatureValue(port: portEnum): number {
         let orid = rb.orderId();
         let list = pro.getTemperatureValue(orid, port);
         rb.write(list);
-        basic.pause(200);
+        basic.pause(1000);
         rb.read();
         let item = rb.getDataItem(orid,0);
         return pro.parseTemperatureValue(item);
     }
-    //% blockId="getHumidityValue" block="%port |obtain the humidity sensor value"
+    //% blockId="getHumidityValue" block="%port |get the humidity sensor value"
     export function getHumidityValue(port: portEnum): number {
         let orid = rb.orderId();
         let list = pro.getTemperatureValue(orid, port);
         rb.write(list);
-        basic.pause(200);
+        basic.pause(1000);
         rb.read();
         let item = rb.getDataItem(orid,0);
         return pro.parseHumidityValue(item);  
@@ -555,7 +555,7 @@ namespace robobloq {
         // 获取温度传感器数值
         parseTemperatureValue(itme: number[]): number{
             if (!itme || itme.length <= 5) return 0;
-            const value = itme[5] + itme[6];
+            const value = itme[7];
             return value;
         }
         // 获取湿度传感器数值
@@ -647,7 +647,7 @@ namespace robobloq {
             list[size-1] = this.sumCheck(list,0);
             return list;
         }
-        // 获取温度传感器数值 获取湿度传感器数值
+        //  获取湿度传感器数值
         getTemperatureValue(order: number, port: number): number[]{
             let size: number = 7 ;
             let list: number[]= [82,66, size, order, 0xA5, port,0];
