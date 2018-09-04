@@ -375,7 +375,7 @@ namespace robobloq {
         let orid = rb.orderId();
         let list = pro.getTemperatureValue(orid, port);
         rb.write(list);
-        basic.pause(1000);
+        basic.pause(200);
         rb.read();
         let item = rb.getDataItem(orid,0);
         return pro.parseTemperatureValue(item);
