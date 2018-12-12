@@ -328,7 +328,7 @@ namespace robobloq {
         let list = pro.setMp3(oid, port, action, info);
         rb.write(list);
     }
-    //% blockId="setMp3Sound" block="MP3 %port |sound%sound"
+    /*//% blockId="setMp3Sound" block="MP3 %port |sound%sound"*/
     export function setMp3Sound(port: portEnum, sound: number): void {
         let oid = 0;
         if(sound > 100){
