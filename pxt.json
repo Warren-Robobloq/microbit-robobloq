@@ -1,7 +1,7 @@
 {
     "name": "robobloq",
     "version": "1.0.1",
-    "description": "Robobloq blocks",
+    "description": "Robobloq blocks!",
     "license": "MIT",
     "dependencies": {
         "core": "*"
@@ -9,6 +9,7 @@
     "files": [
         "README.md",
         "main.ts",
+       
         "_locales/zh/robobloq-strings.json"
     ],
     "public": true
