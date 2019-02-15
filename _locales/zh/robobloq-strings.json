@@ -6,6 +6,19 @@
     "robobloq.setBuzzer|block": "播放 %rate|音调 %time | 节拍",
     "robobloq.setUltrasonicLight|block": "设置 %e| 超声波颜色 红 %red|绿 %green |蓝 %blue",
     "robobloq.setMove|block": "设置M1速度 %m1Speed|M2速度 %m2Speed",
+    "robobloq.setMove2|block": "设置 电机%Direction |速度为 %Speed",
+    "robobloq.setEngine|block": "设置舵机 %port |插头%type |角度为%angle",
+    "robobloq.getSoundValue|block": "%port| 获取声音传感器数值",
+    "robobloq.getLightValue|block": "%port| 获取光线传感器数值",
+    "robobloq.getHomanValue|block": "%port| 获取人体传感器数值",
+    "robobloq.getLinePatrolValue|block":"%port| 巡线传感器数值",
+    "robobloq.getTemperatureValue|block": "%port| 获取温度传感器数值",
+    "robobloq.getHumidityValue|block": "%port| 获取湿度传感器数值",
+    "robobloq.getGyroValue|block": "%port| 获取陀螺仪传感器数值",
+    "robobloq.setMp3|block": "Mp3模块 %port| %action",
+    "robobloq.setMp3Sound|block": "Mp3模块 %port |音量为%sound",
+    "robobloq.setOutEngine|block": "设置电机 %port |插头%type |%Direction |运动，以速度%speed",
+
     "enumSoundTime.Half|block":"二分之一",
     "enumSoundTime.Quarter|block":"四分之一",
     "enumSoundTime.Eighth|block":"八分之一",
@@ -21,5 +34,17 @@
     "portEnum.Port8|block":"端口8",
     "lightEnum.Double|block":"双灯",
     "lightEnum.Left|block":"左灯",
-    "lightEnum.Right|block":"右灯"
+    "lightEnum.Right|block":"右灯",
+    "directionEnum.up|block": "向前",
+    "directionEnum.after|block": "向后",
+    "directionEnum.left|block": "向左",
+    "directionEnum.right|block": "向右",
+    "directionEnum2.clockwise|block": "顺时针",
+    "directionEnum2.anticlockwise|block": "逆时针",
+    "mp3Enum1.play|block": "播放歌曲",
+    "mp3Enum1.stop|block": "暂停歌曲",
+    "mp3Enum1.up|block": "上一首",
+    "mp3Enum1.down|block": "下一首"
+
+
 }
