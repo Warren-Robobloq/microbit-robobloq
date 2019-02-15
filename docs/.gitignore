@@ -1,0 +1,8 @@
+.DS_Store
+.vscode
+node_modules
+.history
+built
+projects
+pxt_modules
+package-lock.json
